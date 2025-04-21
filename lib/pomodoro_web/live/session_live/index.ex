@@ -2,8 +2,8 @@ defmodule PomodoroWeb.SessionLive.Index do
   use PomodoroWeb, :live_view
   alias Pomodoro.Sessions
 
-  @work_duration 1 * 60
-  @break_duration 1 * 60
+  @work_duration 25 * 60
+  @break_duration 5 * 60
 
   @impl true
   def mount(_params, _session, socket) do
