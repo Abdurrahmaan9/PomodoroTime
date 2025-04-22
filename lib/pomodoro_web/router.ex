@@ -17,14 +17,13 @@ defmodule PomodoroWeb.Router do
   scope "/", PomodoroWeb do
     pipe_through :browser
 
-    # get "/", PageController, :home
-    live "/sessions", SessionLive.Index, :index
-    live "/sessions/new", SessionLive.Index, :new
-    live "/sessions/:id/edit", SessionLive.Index, :edit
+    live "/", SessionLive.Index, :index
+    # live "/sessions/new", SessionLive.Index, :new
+    # live "/sessions/:id/edit", SessionLive.Index, :edit
 
-    live "/sessions/:id", SessionLive.Show, :show
-    live "/sessions/:id/show/edit", SessionLive.Show, :edit
-    live "/sessions/show/edit", SessionLive.Show, :edit
+    # live "/sessions/:id", SessionLive.Show, :show
+    # live "/sessions/:id/show/edit", SessionLive.Show, :edit
+    # live "/sessions/show/edit", SessionLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
