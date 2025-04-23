@@ -13,6 +13,7 @@ defmodule PomodoroWeb.SessionLive.Index do
       |> assign(:state, :stopped)
       |> assign(:session_type, :work)
       |> assign(:sessions, Sessions.list_sessions())
+      |> assign(theme: "bg-sky-950")  # default (Tomorrow Night Blue)
 
     {:ok, socket}
   end
@@ -46,9 +47,47 @@ defmodule PomodoroWeb.SessionLive.Index do
     {:noreply, assign(socket, state: :stopped, time_left: time_left, timer_ref: nil)}
   end
 
+  # setting the theme for the application
+  @impl true
+  def handle_event("set_theme", %{"theme" => theme} = _params, socket) do
+    {:noreply, assign(socket, :theme, theme)}
+  end
+
   @impl true
   def handle_info(:tick, socket) do
     time_left = socket.assigns.time_left - 1
+    # Handling the browser notifications
+    session_type = to_string(socket.assigns.session_type) |> String.capitalize()
+
+    socket =
+      cond do
+        time_left == 1499 ->
+          push_event(socket, "notify", %{
+            session_type: session_type,
+            message: "Work Session Started!"
+          })
+
+        time_left == 60 ->
+          push_event(socket, "notify", %{
+            session_type: session_type,
+            message: "1 minute left!"
+          })
+
+        time_left == 299 ->
+          push_event(socket, "notify", %{
+            session_type: session_type,
+            message: "Break Session Stated!"
+          })
+
+        time_left <= 0 ->
+          push_event(socket, "notify", %{
+            session_type: session_type,
+            message: "#{session_type} session complete!"
+          })
+
+        true ->
+          socket
+      end
 
     if time_left <= 0 do
       :timer.cancel(socket.assigns.timer_ref)

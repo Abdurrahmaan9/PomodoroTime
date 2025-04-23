@@ -28,7 +28,8 @@ Status of the current application and future plans for the application
     * 5 Minute Break After the 25 Minuter work session
     * Pausing of a session
     * Resuming of a paused session/break
-    * Batabase to store the completed session/breaks with the start_time/end_time and task_type(work or break)
+    * Browser notifications
+    * Database to store the completed session/breaks with the start_time/end_time and task_type(work or break)
 
 # Future Feature Consideration
   <!-- Future Feature Consideration: -->

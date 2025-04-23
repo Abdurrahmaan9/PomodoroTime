@@ -25,7 +25,29 @@ import topbar from "../vendor/topbar"
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,
-  params: {_csrf_token: csrfToken}
+  params: {_csrf_token: csrfToken},
+  hooks: {
+    PomodoroTimer: {
+      mounted() {
+        // Requesting notification permission when the LiveView mounts
+        if (Notification.permission === "default") {
+          Notification.requestPermission().then(permission => {
+            console.log("Notification permission:", permission)
+          })
+        }
+
+        // Listening for notification events from the server
+        this.handleEvent("notify", ({ session_type, message }) => {
+          if (Notification.permission === "granted") {
+            new Notification(`${session_type} Session`, {
+              body: message,
+              icon: "/images/favicon.ico"
+            })
+          }
+        })
+      }
+    }
+  }
 })
 
 // Show progress bar on live navigation and form submits
