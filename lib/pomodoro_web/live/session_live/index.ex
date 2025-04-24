@@ -60,11 +60,18 @@ defmodule PomodoroWeb.SessionLive.Index do
     session_type = to_string(socket.assigns.session_type) |> String.capitalize()
 
     socket =
+      # session notifications
       cond do
         time_left == 1499 ->
           push_event(socket, "notify", %{
             session_type: session_type,
-            message: "Work Session Started!"
+            message: "#{session_type} Session Started!"
+          })
+
+        time_left == 299 ->
+          push_event(socket, "notify", %{
+            session_type: session_type,
+            message: "#{session_type} Session Stated!"
           })
 
         time_left == 60 ->
@@ -73,16 +80,10 @@ defmodule PomodoroWeb.SessionLive.Index do
             message: "1 minute left!"
           })
 
-        time_left == 299 ->
-          push_event(socket, "notify", %{
-            session_type: session_type,
-            message: "Break Session Stated!"
-          })
-
         time_left <= 0 ->
           push_event(socket, "notify", %{
             session_type: session_type,
-            message: "#{session_type} session complete!"
+            message: "#{session_type} Session Complete!"
           })
 
         true ->

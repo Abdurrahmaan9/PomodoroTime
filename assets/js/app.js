@@ -21,32 +21,18 @@ import "phoenix_html"
 import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
+// import ThemeHook from "./theme"
+import NotificationHook from "./notifications"
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,
   params: {_csrf_token: csrfToken},
   hooks: {
-    PomodoroTimer: {
-      mounted() {
-        // Requesting notification permission when the LiveView mounts
-        if (Notification.permission === "default") {
-          Notification.requestPermission().then(permission => {
-            console.log("Notification permission:", permission)
-          })
-        }
+    // ThemeHook,
+    NotificationHook,
 
-        // Listening for notification events from the server
-        this.handleEvent("notify", ({ session_type, message }) => {
-          if (Notification.permission === "granted") {
-            new Notification(`${session_type} Session`, {
-              body: message,
-              icon: "/images/favicon.ico"
-            })
-          }
-        })
-      }
-    }
+    // Add any other hooks here
   }
 })
 

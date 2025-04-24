@@ -16,6 +16,7 @@ defmodule PomodoroWeb.Router do
 
   scope "/", PomodoroWeb do
     pipe_through :browser
+    # live_session :user_theme, on_mount: [{PomodoroWeb.ThemeLive, :load_theme}] do
 
     live "/", SessionLive.Index, :index
     # live "/sessions/new", SessionLive.Index, :new
@@ -24,6 +25,7 @@ defmodule PomodoroWeb.Router do
     # live "/sessions/:id", SessionLive.Show, :show
     # live "/sessions/:id/show/edit", SessionLive.Show, :edit
     # live "/sessions/show/edit", SessionLive.Show, :edit
+    # end
   end
 
   # Other scopes may use custom stacks.
