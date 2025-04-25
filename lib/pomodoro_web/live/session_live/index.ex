@@ -92,7 +92,7 @@ defmodule PomodoroWeb.SessionLive.Index do
 
     if time_left <= 0 do
       :timer.cancel(socket.assigns.timer_ref)
-
+    
       session_params = %{
         start_time: NaiveDateTime.utc_now() |> DateTime.add(-if(socket.assigns.session_type == :work, do: @work_duration, else: @break_duration), :second),
         end_time: NaiveDateTime.utc_now(),
