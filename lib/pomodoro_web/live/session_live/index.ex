@@ -94,8 +94,8 @@ defmodule PomodoroWeb.SessionLive.Index do
       :timer.cancel(socket.assigns.timer_ref)
 
       session_params = %{
-        start_time: DateTime.utc_now() |> DateTime.add(-if(socket.assigns.session_type == :work, do: @work_duration, else: @break_duration), :second),
-        end_time: DateTime.utc_now(),
+        start_time: NaiveDateTime.utc_now() |> DateTime.add(-if(socket.assigns.session_type == :work, do: @work_duration, else: @break_duration), :second),
+        end_time: NaiveDateTime.utc_now(),
         duration: if(socket.assigns.session_type == :work, do: @work_duration, else: @break_duration),
         type: to_string(socket.assigns.session_type)
       }
