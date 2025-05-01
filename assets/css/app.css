@@ -3,3 +3,212 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+/* siso ball styles */
+/* .ball {
+   position: relative;
+   bottom: 50px;
+   left: calc(100% - 20px);
+   width: 50px;
+   height: 50px;
+   background: #fff;
+   border-radius: 50%;
+   animation: ball-move8234 3s ease-in-out 1s infinite alternate;
+ }
+ 
+ .ball::after {
+   position: absolute;
+   content: '';
+   top: 25px;
+   right: 5px;
+   width: 5px;
+   height: 5px;
+   background: #000;
+   border-radius: 50%;
+ }
+ 
+ .bar {
+   width: 200px;
+   height: 12.5px;
+   background: #FFDAAF;
+   border-radius: 30px;
+   transform: rotate(-15deg);
+   animation: up-down6123 3s ease-in-out 1s infinite alternate;
+ }
+ 
+ @keyframes up-down6123 {
+   from {
+     transform: rotate(-15deg);
+   }
+ 
+   to {
+     transform: rotate(15deg);
+   }
+ }
+ 
+ @keyframes ball-move8234 {
+   from {
+     left: calc(100% - 40px);
+     transform: rotate(360deg);
+   }
+ 
+   to {
+     left: calc(0% - 20px);
+     transform: rotate(0deg);
+   }
+ } */
+
+
+ /* Title Glitching styles */
+ .glitch {
+   position: relative;
+   font-size: 25px;
+   font-weight: 700;
+   line-height: 1.2;
+   color: #fff;
+   letter-spacing: 5px;
+   z-index: 1;
+   animation: shift 1s ease-in-out infinite alternate;
+ }
+ 
+ .glitch:before,
+ .glitch:after {
+   display: block;
+   content: attr(data-glitch);
+   position: absolute;
+   top: 0;
+   left: 0;
+   opacity: 0.8;
+ }
+ 
+ .glitch:before {
+   animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+   color: #8b00ff;
+   z-index: -1;
+ }
+ 
+ .glitch:after {
+   animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+   color: #00e571;
+   z-index: -2;
+ }
+ 
+ @keyframes glitch {
+   0% {
+     transform: translate(0);
+   }
+ 
+   20% {
+     transform: translate(-3px, 3px);
+   }
+ 
+   40% {
+     transform: translate(-3px, -3px);
+   }
+ 
+   60% {
+     transform: translate(3px, 3px);
+   }
+ 
+   80% {
+     transform: translate(3px, -3px);
+   }
+ 
+   to {
+     transform: translate(0);
+   }
+ }
+ 
+ @keyframes shift {
+   0%, 40%, 44%, 58%, 61%, 65%, 69%, 73%, 100% {
+     transform: skewX(0deg);
+   }
+ 
+   41% {
+     transform: skewX(10deg);
+   }
+ 
+   42% {
+     transform: skewX(-10deg);
+   }
+ 
+   59% {
+     transform: skewX(40deg) skewY(10deg);
+   }
+ 
+   60% {
+     transform: skewX(-40deg) skewY(-10deg);
+   }
+ 
+   63% {
+     transform: skewX(10deg) skewY(-5deg);
+   }
+ 
+   70% {
+     transform: skewX(-50deg) skewY(-20deg);
+   }
+ 
+   71% {
+     transform: skewX(10deg) skewY(-10deg);
+   }
+ }
+ 
+ /* Menu drop downs */
+ #checkbox {
+   display: none;
+ }
+ 
+ .toggle {
+   position: relative;
+   width: 40px;
+   height: 40px;
+   cursor: pointer;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
+   transition-duration: .5s;
+ }
+ 
+ .bars {
+   width: 100%;
+   height: 4px;
+   background-color: rgb(176, 92, 255);
+   border-radius: 4px;
+ }
+ 
+ #bar2 {
+   transition-duration: .8s;
+ }
+ 
+ #bar1,#bar3 {
+   width: 70%;
+ }
+ 
+ #checkbox:checked + .toggle .bars {
+   position: absolute;
+   transition-duration: .5s;
+ }
+ 
+ #checkbox:checked + .toggle #bar2 {
+   transform: scaleX(0);
+   transition-duration: .5s;
+ }
+ 
+ #checkbox:checked + .toggle #bar1 {
+   width: 100%;
+   transform: rotate(45deg);
+   transition-duration: .5s;
+ }
+ 
+ #checkbox:checked + .toggle #bar3 {
+   width: 100%;
+   transform: rotate(-45deg);
+   transition-duration: .5s;
+ }
+ 
+ #checkbox:checked + .toggle {
+   transition-duration: .5s;
+   transform: rotate(180deg);
+ }

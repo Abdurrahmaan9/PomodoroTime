@@ -62,13 +62,13 @@ defmodule PomodoroWeb.SessionLive.Index do
     socket =
       # session notifications
       cond do
-        time_left == 1499 ->
+        time_left == @work_duration - 1 and session_type == "Work" ->
           push_event(socket, "notify", %{
             session_type: session_type,
             message: "#{session_type} Session Started!"
           })
 
-        time_left == 299 ->
+        time_left == @break_duration - 1 and session_type == "Break" ->
           push_event(socket, "notify", %{
             session_type: session_type,
             message: "#{session_type} Session Stated!"
