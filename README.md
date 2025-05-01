@@ -30,6 +30,7 @@ Status of the current application and future plans for the application
     * Resuming of a paused session/break
     * Browser notifications
     * Database to store the completed session/breaks with the start_time/end_time and task_type(work or break)
+    * Implement browser notifications for session completion (requires JavaScript in LiveView).
 
 # Future Feature Consideration
   <!-- Future Feature Consideration: -->
@@ -37,4 +38,3 @@ Status of the current application and future plans for the application
     * adding user accounts using mix phx.gen.auth to associate sessions with users.
     * User management to ensure storing the user session data
     * adding dashboard with statistics (e.g., total work time) using Ecto queries.
-    * Implement browser notifications for session completion (requires JavaScript in LiveView).
