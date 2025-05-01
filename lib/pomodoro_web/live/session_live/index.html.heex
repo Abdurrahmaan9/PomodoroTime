@@ -2,7 +2,9 @@
   <div id="pomodoro-timer" phx-hook="NotificationHook" class="text-center">
     <%!-- <div id="theme-hook" phx-hook="ThemeHook"></div> --%>
 
-    <h1 class="text-2xl font-bold mb-4">Pomodoro Timer</h1>
+    <div class="loader">
+      <div data-glitch="Pomodoro Timer" class="glitch">Pomodoro Timer</div>
+   </div>
 
     <div class="text-4xl font-mono mb-4">
       <%= format_time(@time_left) %>
@@ -45,6 +47,11 @@
       <tbody>
         <%= for session <- @sessions do %>
           <tr>
+            <td class="border p-2">
+              <.link navigate={~p"/sessions/#{session.id}"}>
+                <%= session.id %>
+              </.link>
+            </td>
             <td class="border p-2"><%= session.type %></td>
             <td class="border p-2"><%= session.start_time %></td>
             <td class="border p-2"><%= session.end_time %></td>

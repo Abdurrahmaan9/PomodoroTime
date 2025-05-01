@@ -3,29 +3,57 @@
     <div class="justify-between border-b border-zinc-100 py-3 text-sm">
       <h1 class="text-4xl font-bold text-center text-gray-100 mb-6 tracking-wide">Welcome to your own Time Managment System!</h1>
     </div>
-    <form phx-change="set_theme" class="form-group">
-      <select name="theme" class="bg-gray-800 text-white p-2 rounded">
-        <option value="" disabled selected>Background</option>
-        <option value="bg-sky-950" style="background: linear-gradient(to right, rgb(15,23,42), rgb(30,41,59)); color: white;">
-          Tomorrow Night
-        </option>
-        <option value="bg-gray-900" style="background: linear-gradient(to right, rgb(17,24,39), rgb(31,41,55)); color: white;">
-          Charcoal
-        </option>
-        <option value="bg-white text-black" style="background: linear-gradient(to right, rgb(255,255,255), rgb(245,245,245)); color: black;">
-          Light
-        </option>
-        <option value="bg-[#E43F37]" style="background: linear-gradient(to right, rgb(228,63,55), rgb(200,50,45)); color: white;">
-          Imperial Red
-        </option>
-        <option value="bg-green-900" style="background: linear-gradient(to right, rgb(20,83,45), rgb(22,101,52)); color: white;">
-          Forest Green
-        </option>
-        <option value="bg-blue-900" style="background: linear-gradient(to right, rgb(30,58,138), rgb(37,99,235)); color: white;">
-          Deep Blue
-        </option>
-      </select>
-    </form>
+    <!-- Hamburger Menu Toggle -->
+    <input type="checkbox" id="checkbox" class="hidden peer">
+    <label for="checkbox" class="toggle cursor-pointer" id="menu-toggle">
+      <div class="bars" id="bar1"></div>
+      <div class="bars" id="bar2"></div>
+      <div class="bars" id="bar3"></div>
+    </label>
+
+    <!-- Dropdown Menu with Theme Options -->
+    <div id="menu-toggle" class="hidden peer-checked:flex flex-col gap-2 absolute right-4 top-14 bg-gray-800 p-4 rounded shadow-lg z-50">
+      <form phx-change="set_theme" class="flex flex-col gap-2">
+        <label class="cursor-pointer">
+          <input type="radio" name="theme" value="bg-sky-950" class="hidden peer" />
+          <div class="peer-checked:ring-2 peer-checked:ring-white rounded" style="background: linear-gradient(to right, rgb(15,23,42), rgb(30,41,59)); color: white;">
+            Tomorrow Night
+          </div>
+        </label>
+        <label class="cursor-pointer">
+          <input type="radio" name="theme" value="bg-gray-900" class="hidden peer" />
+          <div class="peer-checked:ring-2 peer-checked:ring-white rounded" style="background: linear-gradient(to right, rgb(17,24,39), rgb(31,41,55)); color: white;">
+            Charcoal
+          </div>
+        </label>
+        <label class="cursor-pointer">
+          <input type="radio" name="theme" value="bg-white text-black" class="hidden peer" />
+          <div class="peer-checked:ring-2 peer-checked:ring-black rounded" style="background: linear-gradient(to right, rgb(255,255,255), rgb(245,245,245)); color: black;">
+            Light
+          </div>
+        </label>
+        <!-- Add the other themes in the same pattern -->
+        <label class="cursor-pointer">
+          <input type="radio" name="theme" value="bg-[#E43F37]" class="hidden peer" />
+          <div class="peer-checked:ring-2 peer-checked:ring-white rounded" style="background: linear-gradient(to right, rgb(228,63,55), rgb(200,50,45)); color: white;">
+            Imperial Red
+          </div>
+        </label>
+        <label class="cursor-pointer">
+          <input type="radio" name="theme" value="bg-green-900" class="hidden peer" />
+          <div class="peer-checked:ring-2 peer-checked:ring-white rounded" style="background: linear-gradient(to right, rgb(20,83,45), rgb(22,101,52)); color: white;">
+            Forest Green
+          </div>
+        </label>
+        <label class="cursor-pointer">
+          <input type="radio" name="theme" value="bg-blue-900" class="hidden peer" />
+          <div class="peer-checked:ring-2 peer-checked:ring-white rounded" style="background: linear-gradient(to right, rgb(30,58,138), rgb(37,99,235)); color: white;">
+            Deep Blue
+          </div>
+        </label>
+      </form>
+      
+    </div>
     
   </div>
 </header>
