@@ -30,6 +30,7 @@ let liveSocket = new LiveSocket("/live", Socket, {
   params: {_csrf_token: csrfToken},
   hooks: {
     // ThemeHook,
+    // DropdownTheme,
     NotificationHook,
 
     // Add any other hooks here
