@@ -24,17 +24,17 @@ Status of the current application and future plans for the application
 
 # Current Features
   <!-- Current Feature: -->
-    * stating a 25 minute work session
-    * 5 Minute Break After the 25 Minuter work session
-    * Pausing of a session
-    * Resuming of a paused session/break
-    * Browser notifications
-    * Database to store the completed session/breaks with the start_time/end_time and task_type(work or break)
-    * Implement browser notifications for session completion (requires JavaScript in LiveView).
+    * Starting a 25 Minute Work Session.
+    * Starting a 5 Minute Break After the 25 Minuter work session completion.
+    * Pausing of a session.
+    * Resuming of a paused session/break.
+    * Browser notifications.
+    * Database to store the completed session/breaks with the start_time/end_time and task_type(work or break).
+    * Browser notifications for session/break starting and for session/break completion.
 
 # Future Feature Consideration
   <!-- Future Feature Consideration: -->
-    * custom task names
-    * adding user accounts using mix phx.gen.auth to associate sessions with users.
-    * User management to ensure storing the user session data
+    * custom task names.
+    * ?adding user accounts using mix phx.gen.auth to associate sessions with users.
+    * ?User management to ensure storing the user session data.
     * adding dashboard with statistics (e.g., total work time) using Ecto queries.

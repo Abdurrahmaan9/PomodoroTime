@@ -1,29 +1,51 @@
-<.header>
-  Session {@session.id}
-  <:subtitle>This is a session record from your database.</:subtitle>
-  <:actions>
-    <.link patch={~p"/sessions/#{@session}/show/edit"} phx-click={JS.push_focus()}>
-      <.button>Edit session</.button>
-    </.link>
-  </:actions>
-</.header>
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">Show Session</h1>
 
-<.list>
-  <:item title="Start time">{@session.start_time}</:item>
-  <:item title="End time">{@session.end_time}</:item>
-  <:item title="Duration">{@session.duration}</:item>
-  <:item title="Type">{@session.type}</:item>
-</.list>
+  <ul class="list-disc pl-5 mb-4">
+    <li>
+      <strong>ID:</strong>
+      <%= @session.id %>
+    </li>
+    <li>
+      <strong>Type:</strong>
+      <%= @session.type |> String.capitalize() %>
+    </li>
+    <li>
+      <strong>Start time:</strong>
+      <%= DateTime.to_string(@session.start_time) %>
+    </li>
+    <li>
+      <strong>End time:</strong>
+      <%= DateTime.to_string(@session.end_time) %>
+    </li>
+    <li>
+      <strong>Duration:</strong>
+      <%= @session.duration %> seconds
+    </li>
+  </ul>
 
-<.back navigate={~p"/sessions"}>Back to sessions</.back>
+  <div class="space-x-4">
+    <span>
+      <.link navigate={~p"/sessions/#{@session.id}/edit"} class="bg-blue-500 text-white px-4 py-2 rounded">
+        Edit
+      </.link>
+    </span>
+    <span>
+      <.link
+        navigate="#"
+        phx-click="delete"
+        phx-value-id={@session.id}
+        data-confirm="Are you sure?"
+        class="bg-red-500 text-white px-4 py-2 rounded">
+        Delete
+      </.link>
+    </span>  
+    <span>
+      <.link navigate={~p"/"} class="bg-gray-500 text-white px-4 py-2 rounded">
+        Back
+      </.link>
+    </span>
+  </div>
+</div>
 
-<.modal :if={@live_action == :edit} id="session-modal" show on_cancel={JS.patch(~p"/sessions/#{@session}")}>
-  <.live_component
-    module={PomodoroWeb.SessionLive.FormComponent}
-    id={@session.id}
-    title={@page_title}
-    action={@live_action}
-    session={@session}
-    patch={~p"/sessions/#{@session}"}
-  />
-</.modal>
+TODO start displaying this module

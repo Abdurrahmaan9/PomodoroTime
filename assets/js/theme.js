@@ -1,10 +1,9 @@
-let ThemeHook = {
-   mounted() {
-     const theme = localStorage.getItem("theme");
-     if (theme) {
-       this.pushEvent("set_theme", { theme });
-     }
-   }
- };
- export default ThemeHook;
- 
+// assets/js/theme.js
+export function setTheme(theme) {
+  localStorage.setItem("theme", theme);
+  document.documentElement.setAttribute("data-theme", theme);
+}
+
+export function getStoredTheme() {
+  return localStorage.getItem("theme");
+}

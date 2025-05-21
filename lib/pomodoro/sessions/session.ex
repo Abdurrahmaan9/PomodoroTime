@@ -7,6 +7,8 @@ defmodule Pomodoro.Sessions.Session do
     field :start_time, :naive_datetime
     field :end_time, :naive_datetime
     field :duration, :integer
+    field :name, :string
+    field :description, :string
 
     timestamps(type: :utc_datetime)
   end
@@ -14,7 +16,7 @@ defmodule Pomodoro.Sessions.Session do
   @doc false
   def changeset(session, attrs) do
     session
-    |> cast(attrs, [:start_time, :end_time, :duration, :type])
+    |> cast(attrs, [:start_time, :end_time, :duration, :type, :name, :description])
     |> validate_required([:start_time, :end_time, :duration, :type])
   end
 end

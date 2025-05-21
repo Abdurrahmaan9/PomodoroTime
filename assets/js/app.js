@@ -21,18 +21,45 @@ import "phoenix_html"
 import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
-// import ThemeHook from "./theme"
 import NotificationHook from "./notifications"
+// import { getStoredTheme, setTheme } from "./theme"
+
+// window.addEventListener("DOMContentLoaded", () => {
+//   const theme = getStoredTheme() || "light";
+//   setTheme(theme);
+// });
+
+document.addEventListener('click', function(event) {
+  const toggle = document.getElementById('hamburger');
+  const dropdown = document.getElementById('menu-dropdown');
+  const checkbox = document.getElementById('menu-toggle');
+
+  const clickedInside = toggle.contains(event.target) || dropdown.contains(event.target);
+
+  if (!clickedInside) {
+  checkbox.checked = false;
+  }
+});
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
+
+  // params: {
+  //   _theme: getStoredTheme() || "light"
+  // },
+  
   longPollFallbackMs: 2500,
   params: {_csrf_token: csrfToken},
   hooks: {
-    // ThemeHook,
-    // DropdownTheme,
     NotificationHook,
-
+    // Add the handleEvent for "theme-changed"
+    // ThemeChange: {
+    //   mounted() {
+    //     this.handleEvent("theme-changed", ({ theme }) => {
+    //       setTheme(theme);
+    //     });
+    //   }
+    // }
     // Add any other hooks here
   }
 })

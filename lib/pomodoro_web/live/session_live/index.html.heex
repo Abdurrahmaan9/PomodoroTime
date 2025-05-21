@@ -27,10 +27,6 @@
         <button phx-click="start" class="bg-green-500 text-white px-4 py-2 rounded">Resume</button>
       <% end %>
 
-      <%= if @state == :resume do %>
-        <button phx-click="resume" class="bg-blue-500 text-white px-4 py-2 rounded">Resumed</button>
-      <% end %>
-
       <button phx-click="reset" class="bg-red-500 text-white px-4 py-2 rounded">Reset</button>
     </div>
 
@@ -38,7 +34,10 @@
     <table class={" min-w-full text-white border-2 border-gray-700" <> @theme }>
       <thead>
         <tr>
+          <th class="border p-2">ID</th>
           <th class="border p-2">Type</th>
+          <th class="border p-2">Name</th>
+          <th class="border p-2">Description</th>
           <th class="border p-2">Start Time</th>
           <th class="border p-2">End Time</th>
           <th class="border p-2">Duration (seconds)</th>
@@ -53,8 +52,10 @@
               </.link>
             </td>
             <td class="border p-2"><%= session.type %></td>
-            <td class="border p-2"><%= session.start_time %></td>
-            <td class="border p-2"><%= session.end_time %></td>
+            <td class="border p-2"><%= session.name %></td>
+            <td class="border p-2"><%= session.description %></td>
+            <td class="border p-2"><%= Calendar.strftime(session.start_time, "%d %B, %Y, %H:%M:%S") %></td>
+            <td class="border p-2"><%= Calendar.strftime(session.end_time, "%d %B, %Y, %H:%M:%S") %></td>
             <td class="border p-2"><%= session.duration %></td>
           </tr>
         <% end %>

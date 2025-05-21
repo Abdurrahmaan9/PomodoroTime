@@ -19,9 +19,16 @@ defmodule PomodoroWeb.Router do
     # live_session :user_theme, on_mount: [{PomodoroWeb.ThemeLive, :load_theme}] do
 
     live "/", SessionLive.Index, :index
+<<<<<<< Updated upstream
     live "/sessions/new", SessionLive.FormComponent, :new
     live "/sessions/:id", SessionLive.Show, :show
     live "/sessions/:id/edit", SessionLive.FormComponent, :edit
+=======
+    live "/sessions/create", SessionLive.CreateSession, :new
+    live "/sessions/new", SessionLive.FormComponent, :new
+    live "/sessions/:id", SessionLive.Show, :show
+    live "/sessions/:id/edit", SessionLive.FormComponent
+>>>>>>> Stashed changes
     live "/sessions/:id/show/edit", SessionLive.Show, :edit
     # end
   end
